@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+from django.utils.translation import gettext_lazy as _
 import os
 from pathlib import Path
 
@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -118,6 +120,13 @@ USE_L10N = True
 LOCALE_PATHS = [
     BASE_DIR / 'locale/'
 ]
+
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('ru', _('Russia')),
+    ('uz', _('Uzbek')),
+)
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
